@@ -9,13 +9,13 @@ Summary:	Math::GSL Perl module - resticted interface to GNU Scientific Library
 Summary(pl):	Modu³ Perla Math::GSL - ograniczony interfejs do GNU Scientific Library
 Name:		perl-Math-GSL
 Version:	0.01
-Release:	2
+Release:	1
 License:	GPL or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
 # Source0-md5:	abc4474bbbf5439b46a551284013cb35
-BuildRequires:	perl-devel >= 5.8.0
-BuildRequires:	rpm-perlprov >= 4.1-13
+BuildRequires:	perl-devel >= 5.6.1
+BuildRequires:	rpm-perlprov >= 4.0.2-104
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -34,8 +34,7 @@ udostêpniæ te funkcje "tkscope" w module Audio::Data.
 %setup -q -n %{pdir}-%{pnam}-%{version}
 
 %build
-%{__perl} Makefile.PL \
-	INSTALLDIRS=vendor
+%{__perl} Makefile.PL
 
 %{__make} \
 	OPTIMIZE="%{rpmcflags}"
@@ -54,7 +53,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README
-%{perl_vendorarch}/Math/*
-%dir %{perl_vendorarch}/auto/Math/GSL
-%{perl_vendorarch}/auto/Math/GSL/*.bs
-%attr(755,root,root) %{perl_vendorarch}/auto/Math/GSL/*.so
+%{perl_sitearch}/Math/*
+%dir %{perl_sitearch}/auto/Math/GSL
+%{perl_sitearch}/auto/Math/GSL/*.bs
+%attr(755,root,root) %{perl_sitearch}/auto/Math/GSL/*.so
