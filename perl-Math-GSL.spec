@@ -3,8 +3,8 @@
 %bcond_without	tests	# do not perform "make test"
 #
 %include	/usr/lib/rpm/macros.perl
-%define		pdir	Math
-%define		pnam	GSL
+%define	pdir	Math
+%define	pnam	GSL
 Summary:	Math::GSL Perl module - resticted interface to GNU Scientific Library
 Summary(pl):	Modu³ Perla Math::GSL - ograniczony interfejs do GNU Scientific Library
 Name:		perl-Math-GSL
