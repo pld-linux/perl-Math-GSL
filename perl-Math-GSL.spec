@@ -10,7 +10,8 @@ Summary(pl):	Modu³ Perla Math::GSL - ograniczony interfejs do GNU Scientific Lib
 Name:		perl-Math-GSL
 Version:	0.01
 Release:	2
-License:	GPL or Artistic
+# same as perl
+License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
 # Source0-md5:	abc4474bbbf5439b46a551284013cb35
