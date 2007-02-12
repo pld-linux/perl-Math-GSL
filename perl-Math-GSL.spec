@@ -6,7 +6,7 @@
 %define		pdir	Math
 %define		pnam	GSL
 Summary:	Math::GSL Perl module - resticted interface to GNU Scientific Library
-Summary(pl):	Modu³ Perla Math::GSL - ograniczony interfejs do GNU Scientific Library
+Summary(pl.UTF-8):   ModuÅ‚ Perla Math::GSL - ograniczony interfejs do GNU Scientific Library
 Name:		perl-Math-GSL
 Version:	0.01
 Release:	2
@@ -25,11 +25,11 @@ GNU Scientific Library. Only the routines relating the solving of
 polynomials are exported. It exists to provide that function to
 "tkscope" in Audio::Data.
 
-%description -l pl
-Modu³ Perla Math::GSL stanowi bardzo ograniczony interfejs do -lgsl -
+%description -l pl.UTF-8
+ModuÅ‚ Perla Math::GSL stanowi bardzo ograniczony interfejs do -lgsl -
 Biblioteki Naukowej GNU (GNU Scientific Library). Eksportuje jedynie
-funkcje dotycz±ce rozwi±zywania równañ wielomianowych. Istnieje, aby
-udostêpniæ te funkcje "tkscope" w module Audio::Data.
+funkcje dotyczÄ…ce rozwiÄ…zywania rÃ³wnaÅ„ wielomianowych. Istnieje, aby
+udostÄ™pniÄ‡ te funkcje "tkscope" w module Audio::Data.
 
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
