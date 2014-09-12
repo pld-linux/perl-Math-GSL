@@ -59,5 +59,4 @@ rm -rf $RPM_BUILD_ROOT
 %doc README
 %{perl_vendorarch}/Math/*
 %dir %{perl_vendorarch}/auto/Math/GSL
-%{perl_vendorarch}/auto/Math/GSL/*.bs
 %attr(755,root,root) %{perl_vendorarch}/auto/Math/GSL/*.so
