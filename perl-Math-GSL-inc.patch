@@ -1,0 +1,11 @@
+--- Math-GSL-0.39/Build.PL.orig	2016-10-01 08:24:23.000000000 +0200
++++ Math-GSL-0.39/Build.PL	2017-07-02 17:50:23.584626022 +0200
+@@ -85,7 +85,7 @@
+ 
+ $ldflags = '-shared ' . $ldflags unless GSLBuilder::is_darwin();
+ 
+-my $ver2func = do(catfile(qw/inc ver2func/));
++my $ver2func = do("./inc/ver2func");
+ 
+ unless (GSLBuilder::is_release()) {
+     my $swig_ver = swig_version();

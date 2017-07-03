@@ -8,17 +8,30 @@
 Summary:	Math::GSL Perl module - resticted interface to GNU Scientific Library
 Summary(pl.UTF-8):	Moduł Perla Math::GSL - ograniczony interfejs do GNU Scientific Library
 Name:		perl-Math-GSL
-Version:	0.01
-Release:	13
+Version:	0.39
+Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/Math/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	abc4474bbbf5439b46a551284013cb35
+# Source0-md5:	6bbcb412e230d3e1602164e15767d102
+Patch0:		%{name}-inc.patch
+Patch1:		%{name}-update.patch
 URL:		http://search.cpan.org/dist/Math-GSL/
-BuildRequires:	gsl-devel
+BuildRequires:	gsl-devel >= 1.15
+BuildRequires:	perl-Module-Build >= 0.38
+BuildRequires:	perl-PkgConfig >= 0.07720
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
+BuildRequires:	swig-perl
+%if %{with tests}
+BuildRequires:	perl-Test-Class >= 0.12
+BuildRequires:	perl-Test-Exception >= 0.21
+BuildRequires:	perl-Test-Most >= 0.31
+BuildRequires:	perl-Test-Taint >= 1.06
+BuildRequires:	perl-version >= 0.77
+%endif
+Requires:	gsl >= 1.15
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -35,28 +48,35 @@ udostępnić te funkcje "tkscope" w module Audio::Data.
 
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
+%patch0 -p1
+%patch1 -p1
+
+# simulate non-release to force swig rebuild
+mkdir .git
 
 %build
-%{__perl} Makefile.PL \
-	INSTALLDIRS=vendor
-%{__make} \
-	CC="%{__cc}" \
-	OPTIMIZE="%{rpmcflags}"
+%{__perl} Build.PL \
+	config="optimize='%{rpmcflags}'" \
+	destdir=$RPM_BUILD_ROOT \
+	installdirs=vendor
+./Build
 
-%{?with_tests:%{__make} test}
+%{?with_tests:./Build test}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+./Build install
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README
-%{perl_vendorarch}/Math/*
+%doc CREDITS Changes KNOWN_BUGS README.md TODO
+%{perl_vendorarch}/Math/GSL.pm
+%{perl_vendorarch}/Math/GSL
 %dir %{perl_vendorarch}/auto/Math/GSL
-%attr(755,root,root) %{perl_vendorarch}/auto/Math/GSL/*.so
+%dir %{perl_vendorarch}/auto/Math/GSL/*
+%attr(755,root,root) %{perl_vendorarch}/auto/Math/GSL/*/*.so
+%{_mandir}/man3/Math::GSL*.3pm*
