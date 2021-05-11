@@ -25,10 +25,12 @@ BuildRequires:	rpm-perlprov >= 4.1-13
 BuildRequires:	swig-perl
 %if %{with tests}
 BuildRequires:	perl-Test-Class >= 0.12
+BuildRequires:	perl-Test-Deep
 BuildRequires:	perl-Test-Differences
 BuildRequires:	perl-Test-Exception >= 0.21
 BuildRequires:	perl-Test-Most >= 0.31
 BuildRequires:	perl-Test-Taint >= 1.06
+BuildRequires:	perl-Test-Warn
 BuildRequires:	perl-version >= 0.77
 %endif
 Requires:	gsl >= 1.15
