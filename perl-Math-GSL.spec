@@ -57,8 +57,8 @@ udostępnić te funkcje "tkscope" w module Audio::Data.
 mkdir .git
 
 %build
+export CC_FLAGS="%{rpmcppflags} %{rpmcflags}"
 %{__perl} Build.PL \
-	config="optimize='%{rpmcflags}'" \
 	destdir=$RPM_BUILD_ROOT \
 	installdirs=vendor
 ./Build
