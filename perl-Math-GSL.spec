@@ -7,17 +7,17 @@
 Summary:	Math::GSL Perl module - resticted interface to GNU Scientific Library
 Summary(pl.UTF-8):	Moduł Perla Math::GSL - ograniczony interfejs do GNU Scientific Library
 Name:		perl-Math-GSL
-Version:	0.39
-Release:	5
+Version:	0.43
+Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
-Source0:	http://www.cpan.org/modules/by-module/Math/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	6bbcb412e230d3e1602164e15767d102
-Patch0:		%{name}-inc.patch
-Patch1:		%{name}-update.patch
-URL:		http://search.cpan.org/dist/Math-GSL/
+Source0:	https://www.cpan.org/modules/by-module/Math/%{pdir}-%{pnam}-%{version}.tar.gz
+# Source0-md5:	8db782c053ec8417f39f55439a65d3c5
+Patch0:		gsl-2.7.1.patch
+URL:		https://search.cpan.org/dist/Math-GSL/
 BuildRequires:	gsl-devel >= 1.15
+BuildRequires:	perl-Alien-GSL
 BuildRequires:	perl-Module-Build >= 0.38
 BuildRequires:	perl-PkgConfig >= 0.07720
 BuildRequires:	perl-devel >= 1:5.8.0
@@ -51,7 +51,6 @@ udostępnić te funkcje "tkscope" w module Audio::Data.
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
 %patch0 -p1
-%patch1 -p1
 
 # simulate non-release to force swig rebuild
 mkdir .git
