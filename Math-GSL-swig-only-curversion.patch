@@ -1,0 +1,18 @@
+Description: Run the swig rebuild only for the current GSL versions.
+ Rebuilding for older versions is not only a waste of time,
+ it can fail because of changes in GSL headers etc.
+Origin: vendor
+Forwarded: not needed
+Author: gregor herrmann <gregoa@debian.org>
+Last-Update: 2020-06-11
+
+--- a/inc/GSLBuilder.pm
++++ b/inc/GSLBuilder.pm
+@@ -89,6 +89,7 @@
+ 
+     foreach my $ver ( Ver2Func->versions( $cur_ver ) ) {
+ 
++        next unless $ver eq $cur_ver; # only rebuild for current GLS version
+         print "Building wrappers for GSL $ver\n";
+ 
+         my $ver2func = Ver2Func->new( $ver );

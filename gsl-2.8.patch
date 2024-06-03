@@ -1,0 +1,71 @@
+--- Math-GSL-0.43/inc/Ver2Func.pm.orig	2021-07-26 18:28:55.000000000 +0200
++++ Math-GSL-0.43/inc/Ver2Func.pm	2021-12-04 22:49:11.335387076 +0100
+@@ -526,7 +526,34 @@
+ 
+               /
+         ]
+-    }
++    },
++    "2.8" => {
++        new => [
++            qw/
++              ^gsl_matrix_complex_conjugate$
++              ^gsl_vector_complex_conj_memcpy$
++              ^gsl_vector_complex_div_real$
++              ^gsl_linalg_QR_lssolvem_r$
++              ^gsl_linalg_complex_QR_lssolvem_r$
++              ^gsl_linalg_complex_QR_QHmat_r$
++              ^gsl_linalg_QR_UR_lssolve$
++              ^gsl_linalg_QR_UR_lssvx$
++              ^gsl_linalg_QR_UR_QTvec$
++              ^gsl_linalg_QR_UU_lssvx$
++              ^gsl_linalg_QR_UD_lssvx$
++              ^gsl_linalg_QR_UD_QTvec$
++              ^gsl_linalg_complex_cholesky_decomp2$
++              ^gsl_linalg_complex_cholesky_svx2$
++              ^gsl_linalg_complex_cholesky_solve2$
++              ^gsl_linalg_complex_cholesky_scale$
++              ^gsl_linalg_complex_cholesky_scale_apply$
++              ^gsl_linalg_SV_solve2$
++              ^gsl_linalg_SV_lssolve$
++              ^gsl_rstat_norm$
++              ^gsl_integration_lebedev$
++            /
++        ]
++    }
+ 
+ );
+ 
+--- Math-GSL-0.44/swig/Multilarge.i.orig	2023-12-01 20:18:02.000000000 +0100
++++ Math-GSL-0.44/swig/Multilarge.i	2024-06-03 21:10:08.021652953 +0200
+@@ -25,7 +25,7 @@
+ %include "gsl/gsl_matrix.h"
+ %include "gsl/gsl_permutation.h"
+ %include "gsl/gsl_multifit.h"
+-#if MG_GSL_NUM_VERSION >= 002007
++#if MG_GSL_NUM_VERSION >= 0x002007
+   %include "gsl/gsl_multilarge.h"
+ #else
+   %include "legacy/gsl-2.6/gsl_multilarge.h"
+--- Math-GSL-0.44/swig/SparseMatrix.i.orig	2023-12-01 20:18:02.000000000 +0100
++++ Math-GSL-0.44/swig/SparseMatrix.i	2024-06-03 21:10:17.091603817 +0200
+@@ -9,7 +9,7 @@
+     #include "gsl/gsl_spmatrix.h"
+ %}
+ 
+-#if MG_GSL_NUM_VERSION >= 002006
++#if MG_GSL_NUM_VERSION >= 0x002006
+ // ignore gsl_spmatrix_uchar_norm1, gsl_spmatrix_char_norm1, ...
+   %rename("%(regex:/^gsl_spmatrix_u.*_norm1$/$ignore/)s") "";
+   %include "gsl/gsl_spmatrix.h"
+--- Math-GSL-0.44/inc/GSLBuilder.pm.orig	2023-12-01 20:18:02.000000000 +0100
++++ Math-GSL-0.44/inc/GSLBuilder.pm	2024-06-03 21:10:47.674771467 +0200
+@@ -210,7 +210,7 @@ sub compile_swig {
+     push @swig_flags, "-DMG_GSL_MAJOR_VERSION=$major",
+       "-DMG_GSL_MINOR_VERSION=$minor",
+       "-DMG_GSL_VERSION=\"$major.$minor\"",
+-      "-DMG_GSL_NUM_VERSION=$numerical_ver";
++      "-DMG_GSL_NUM_VERSION=0x$numerical_ver";
+ 
+     my $blib_lib = catdir(qw/blib lib/);
+     my $gsldir = catdir('pm', qw/Math GSL/);
