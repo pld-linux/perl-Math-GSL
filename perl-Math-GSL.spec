@@ -23,6 +23,7 @@ BuildRequires:	perl-Module-Build >= 0.38
 BuildRequires:	perl-PkgConfig >= 0.07720
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
+BuildRequires:	rpmbuild(macros) >= 1.745
 BuildRequires:	swig-perl
 %if %{with tests}
 BuildRequires:	perl-Test-Class >= 0.12
