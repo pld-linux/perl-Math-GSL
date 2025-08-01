@@ -17,6 +17,7 @@ Source0:	https://www.cpan.org/modules/by-module/Math/%{pdir}-%{pnam}-%{version}.
 Patch0:		gsl-2.8.patch
 Patch1:		Math-GSL-swig-only-curversion.patch
 Patch2:		Math-GSL-test.patch
+Patch3:		types.patch
 URL:		https://metacpan.org/dist/Math-GSL
 BuildRequires:	gsl-devel >= 1.15
 BuildRequires:	perl-Alien-GSL
@@ -56,6 +57,7 @@ udostępnić te funkcje "tkscope" w module Audio::Data.
 %patch -P0 -p1
 %patch -P1 -p1
 %patch -P2 -p1
+%patch -P3 -p1
 
 # simulate non-release to force swig rebuild
 mkdir .git
