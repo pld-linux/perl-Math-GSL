@@ -8,7 +8,7 @@ Summary:	Math::GSL Perl module - resticted interface to GNU Scientific Library
 Summary(pl.UTF-8):	Moduł Perla Math::GSL - ograniczony interfejs do GNU Scientific Library
 Name:		perl-Math-GSL
 Version:	0.44
-Release:	3
+Release:	4
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
